@@ -1,0 +1,10 @@
+
+<li>
+    <label *ngIf="!task.showEditBox"><input type="checkbox" [(ngModel)]="task.isCompleted">{{task.content}}</label>
+    <button class="btn btn-primary btn-sm" (click)="task.showEditBox = true;"  *ngIf="!task.showEditBox">수정</button>
+    <input type="text" required
+           [(ngModel)]="task.content" *ngIf="task.showEditBox" (keyup.enter)="addTask(taskCreate.value);">
+    <button class="btn btn-primary btn-sm" (click)="task.showEditBox = true;"  *ngIf="task.showEditBox" (click)="addTask(taskCreate.value);">완료</button>
+    <button class="btn btn-primary btn-sm" (click)="taskListService.removeTask(task)">삭제</button>
+</li>
+
